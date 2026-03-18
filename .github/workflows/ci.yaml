@@ -15,6 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check for index.html
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Error: index.html not found in repository root"
+            exit 1
+          else
+            echo "index.html found"
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
